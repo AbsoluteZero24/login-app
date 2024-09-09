@@ -4,13 +4,15 @@ FROM php:7.4-fpm
 RUN docker-php-ext-install mysqli
 
 # Salin file aplikasi ke direktori kerja
-COPY ./index.php /var/www/html/index.php
+#COPY ./index.php /var/www/html/
 
 # Nginx
 FROM nginx:alpine
 
 # Salin konfigurasi Nginx
 COPY ./default.conf /etc/nginx/conf.d/default.conf
+COPY ./index.php /usr/share/nginx/html
+WORKDIR /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80
