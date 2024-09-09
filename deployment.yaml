@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: php-nginx
-          image: absolutezero24/php-nginx:latest
+          image: absolutezero24/php-nginx:v1.1
           ports:
             - containerPort: 80
 ---
