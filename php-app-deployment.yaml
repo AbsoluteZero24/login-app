@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: php-app
-        image: your-dockerhub/php-app:latest
+        image: absolutezero24/php-login:latest
         ports:
         - containerPort: 80
 ---
