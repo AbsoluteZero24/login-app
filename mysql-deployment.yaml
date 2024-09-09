@@ -8,7 +8,7 @@ spec:
   accessModes:
     - ReadWriteMany
   nfs:
-    path: "/mnt/kubernetes-pool/kubernetes/app/assets"
+    path: "/mnt/kubernetes-pool/kubernetes/login-app/db"
     server: 192.168.100.106
 ---
 apiVersion: v1
