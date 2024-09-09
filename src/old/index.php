@@ -1,27 +1,12 @@
 <?php
 session_start();
 
-$host = 'mysql-service';
-$db = 'login_db';
-$user = 'root';
-$pass = 'yourpassword';
-
-$conn = new mysqli($host, $user, $pass, $db);
-
-if ($conn->connect_error) {
-    die("Koneksi gagal: " . $conn->connect_error);
-}
-
 if (isset($_POST['login'])) {
     $username = $_POST['username'];
-    $password = md5($_POST['password']); // Menggunakan MD5 sebagai contoh
+    $password = $_POST['password'];
 
-    $stmt = $conn->prepare("SELECT * FROM users WHERE username=? AND password=?");
-    $stmt->bind_param('ss', $username, $password);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($result->num_rows > 0) {
+    // Contoh sederhana: username = 'admin', password = 'password'
+    if ($username == 'admin' && $password == 'password') {
         $_SESSION['loggedin'] = true;
         header('Location: dashboard.php');
         exit;
