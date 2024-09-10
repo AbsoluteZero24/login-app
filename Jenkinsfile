@@ -36,7 +36,7 @@ pipeline {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'dockerhub-cred', toolName: 'docker') {
-                        sh "docker build -t absolutezero24/php-nginx-login:v1.1 ."
+                        sh "docker build -t absolutezero24/php-nginx-login:v1.2 ."
                     }
                 }
             }
