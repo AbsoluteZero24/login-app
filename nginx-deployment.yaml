@@ -12,6 +12,7 @@ spec:
       labels:
         app: nginx
     spec:
+      automountServiceAccountToken: false
       containers:
       - name: nginx
         image: absolutezero24/php-nginx-login:v1.2
