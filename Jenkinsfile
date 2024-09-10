@@ -42,7 +42,7 @@ pipeline {
             }
         }
 
-        stage('Push Image') {
+        stage('Push Image PHP') {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'dockerhub-cred', toolName: 'docker') {
@@ -52,7 +52,7 @@ pipeline {
             }
         }
 
-        stage('Push Image') {
+        stage('Push Image Nginx') {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'dockerhub-cred', toolName: 'docker') {
