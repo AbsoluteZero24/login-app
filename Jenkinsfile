@@ -66,7 +66,9 @@ pipeline {
             steps {
                 script {
                     withKubeConfig(caCertificate: '', clusterName: 'kubernetes', contextName: '', credentialsId: 'kubernetes-cred', namespace: '', restrictKubeConfigAccess: false, serverUrl: 'https://192.168.100.100:6443') {
-                    sh ". deploy.sh"
+                    sh "kubectl apply -f mysql-deployment.yaml"
+                    sh "kubectl apply -f php-app-deployment.yaml"
+                    sh "kubectl apply -f nginx-deployment.yaml"
                     }
                 }
             }
