@@ -62,12 +62,30 @@ pipeline {
             }
         }
 
-        stage('Deploy to Kubernetes') {
+        stage('Deploy to Kubernetes mysql') {
             steps {
                 script {
                     withKubeConfig(caCertificate: '', clusterName: 'kubernetes', contextName: '', credentialsId: 'kubernetes-cred', namespace: '', restrictKubeConfigAccess: false, serverUrl: 'https://192.168.100.100:6443') {
                     sh "kubectl apply -f mysql-deployment.yaml"
+                    }
+                }
+            }
+        }
+
+        stage('Deploy to Kubernetes php') {
+            steps {
+                script {
+                    withKubeConfig(caCertificate: '', clusterName: 'kubernetes', contextName: '', credentialsId: 'kubernetes-cred', namespace: '', restrictKubeConfigAccess: false, serverUrl: 'https://192.168.100.100:6443') {
                     sh "kubectl apply -f php-app-deployment.yaml"
+                    }
+                }
+            }
+        }
+
+        stage('Deploy to Kubernetes nginx') {
+            steps {
+                script {
+                    withKubeConfig(caCertificate: '', clusterName: 'kubernetes', contextName: '', credentialsId: 'kubernetes-cred', namespace: '', restrictKubeConfigAccess: false, serverUrl: 'https://192.168.100.100:6443') {
                     sh "kubectl apply -f nginx-deployment.yaml"
                     }
                 }
