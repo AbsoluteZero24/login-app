@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 
 if (isset($_POST['login'])) {
     $username = $_POST['username'];
-    $password = md5($_POST['password']); // Menggunakan MD5 sebagai contoh
+    $password = md5($_POST['password']);
 
     $stmt = $conn->prepare("SELECT * FROM users WHERE username=? AND password=?");
     $stmt->bind_param('ss', $username, $password);
@@ -26,21 +26,38 @@ if (isset($_POST['login'])) {
         header('Location: dashboard.php');
         exit;
     } else {
-        echo "Login gagal!";
+        $login_error = "Username atau password salah!";
     }
 }
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <form method="POST" action="">
-        Username: <input type="text" name="username" required><br>
-        Password: <input type="password" name="password" required><br>
-        <button type="submit" name="login">Login</button>
-    </form>
+    <div class="login-container">
+        <div class="login-box">
+            <h2>Login</h2>
+            <?php if (isset($login_error)) { ?>
+                <p class="error"><?php echo $login_error; ?></p>
+            <?php } ?>
+            <form method="POST" action="">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" required>
+                </div>
+                <button type="submit" name="login">Login</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
