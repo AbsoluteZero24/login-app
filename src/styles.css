@@ -58,6 +58,7 @@ body {
     border-radius: 5px;
     font-size: 16px;
     outline: none;
+    transition: border-color 0.3s ease;
 }
 
 .input-group input:focus {
@@ -85,8 +86,4 @@ button:hover {
 .error {
     color: red;
     margin-bottom: 10px;
-}
-
-.input-group input {
-    transition: border-color 0.3s ease;
 }
