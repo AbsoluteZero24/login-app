@@ -26,7 +26,7 @@ pipeline {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'dockerhub-cred', toolName: 'docker') {
-                        sh "docker build -t absolutezero24/php-login:v1.3 ./src/"
+                        sh "docker build -t absolutezero24/php-login:v1.4 ./src/"
                     }
                 }
             }
@@ -46,7 +46,7 @@ pipeline {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'dockerhub-cred', toolName: 'docker') {
-                        sh "docker push absolutezero24/php-login:v1.3"
+                        sh "docker push absolutezero24/php-login:v1.4"
                     }
                 }
             }
